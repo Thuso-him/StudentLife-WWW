@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Welfare and Wellness Reminder page</title>
+    
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Mulish', sans-serif;
+            transition: 0.3s all ease-in-out;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fb;
+            padding: 30px;
+            font-size: 16px;
+        }
+
+        .center {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .shadow-wrap {
+            border-radius: 8px;
+            padding: 40px;
+            background-color: #F0F2FB;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        h1 {
+            text-align: center;
+            color: #10182F;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #10182F;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #DAE1F5;
+            background-color: #fff;
+            color: #545D7A;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #10182F;
+            color: #FFF;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            padding: 12px 50px;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background-color: #8eb7f5;
+            color: #10182F;
+            border-color: #10182F;
+        }
+
+        a {
+            color: #10182F;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="shadow-wrap">
+            <h1>Create New Reminder</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_title">Reminder</label>
+                    {{ form.title }}
+                </div>
+
+                <label for="id_description">Description:</label>
+                {{ form.description }}
+                
+                <div class="form-group">
+                    <label for="id_due_date">Due Date</label>
+                    {{ form.due_date }}
+                </div>
+                <button type="submit">Save</button>
+            </form>
+
+            <a href="{% url 'base:home' %}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

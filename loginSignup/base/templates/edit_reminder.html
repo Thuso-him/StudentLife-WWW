@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="shadow-wrap">
+    <h1>Edit Reminder</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="create-reminder-btn">Save Changes</button>
+    </form>
+    <a href="{% url 'base:home' %}" class="logout-link">Cancel</a>
+  </div>
+{% endblock %}
